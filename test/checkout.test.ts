@@ -25,6 +25,17 @@ describe("checkout", () => {
     expect(res.status).toBe(402);
   });
 
+  it("rejects an unknown discount code", async () => {
+    const api = supertest(createApp());
+    await addToCart(api, "p-tee");
+    const res = await api
+      .post("/checkout")
+      .set("x-cart-id", "c1")
+      .send({ cardNumber: GOOD_CARD, discountCode: "NOPE" });
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBe("invalid discount code NOPE");
+  });
+
   it("applies HACK10 once", async () => {
     const api = supertest(createApp());
     await addToCart(api, "p-tee");
