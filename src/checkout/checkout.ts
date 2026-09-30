@@ -17,6 +17,10 @@ export function checkout(
 ): Order {
   const cart = deps.carts.get(req.cartId);
 
+  if (cart.items.length === 0) {
+    throw new HttpError(400, "cart is empty");
+  }
+
   if (req.discountCode) {
     if (!(req.discountCode in DISCOUNT_CODES)) {
       throw new HttpError(400, `invalid discount code ${req.discountCode}`);

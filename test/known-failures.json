@@ -1,5 +1,4 @@
 [
-  "checkout > rejects checkout of an empty cart with 400",
   "checkout > applies a discount code only once across retries",
   "refunds > rejects refunds above the remaining charged amount"
 ]
