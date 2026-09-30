@@ -53,5 +53,5 @@ export class CartStore {
 }
 
 export function cartTotalCents(cart: Cart): number {
-  return cart.items.reduce((sum, item) => sum + item.unitPriceCents, 0);
+  return cart.items.reduce((sum, item) => sum + item.unitPriceCents * item.quantity, 0);
 }
