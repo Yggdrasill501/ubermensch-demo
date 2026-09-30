@@ -1,5 +1,10 @@
 # Übermensch Demo Shop
 
+> **This repo is maintained by an AI coworker.** Bugs here are fixed by
+> **[Übermensch](https://github.com/Yggdrasill501/ubermensch)** → [how it works](https://github.com/Yggdrasill501/ubermensch#how-it-works) ·
+> [the agent's code](https://github.com/Yggdrasill501/ubermensch/tree/main/agent) ·
+> [its pull requests](https://github.com/Yggdrasill501/ubermensch-demo/pulls?q=is%3Apr)
+
 A tiny web shop API (Express 5 + TypeScript, in-memory data, money in integer cents). It is the
 **playground for [Übermensch](https://github.com/Yggdrasill501/ubermensch)**, an autonomous AI
 coworker you hire, not prompt.
