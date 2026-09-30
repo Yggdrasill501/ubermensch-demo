@@ -16,12 +16,17 @@ export function checkout(
   deps: { carts: CartStore; payments: PaymentProcessor; orders: OrderStore },
 ): Order {
   const cart = deps.carts.get(req.cartId);
+  if (cart.items.length === 0) {
+    throw new HttpError(400, "cart is empty");
+  }
 
   if (req.discountCode) {
     if (!(req.discountCode in DISCOUNT_CODES)) {
       throw new HttpError(400, `invalid discount code ${req.discountCode}`);
     }
-    cart.appliedDiscounts.push(req.discountCode);
+    if (!cart.appliedDiscounts.includes(req.discountCode)) {
+      cart.appliedDiscounts.push(req.discountCode);
+    }
   }
 
   const firstItem = cart.items.reduce((a, b) => (a.unitPriceCents >= b.unitPriceCents ? a : b));
